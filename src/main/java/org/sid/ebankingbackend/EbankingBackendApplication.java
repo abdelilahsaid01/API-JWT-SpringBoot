@@ -16,10 +16,16 @@ import org.sid.ebankingbackend.services.CustomerService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
+import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -27,11 +33,13 @@ import java.util.stream.Stream;
 
 @SpringBootApplication
 @EnableWebSecurity
+@EnableCaching
 public class EbankingBackendApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(EbankingBackendApplication.class, args);
     }
+
    /*@Bean
     CommandLineRunner commandLineRunner(BankAccountService bankAccountService,  CustomerService customerService){
         return args -> {

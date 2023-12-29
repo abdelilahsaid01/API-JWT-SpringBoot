@@ -1,9 +1,7 @@
-/*
 package org.sid.ebankingbackend.mappers;
 
+
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import org.sid.ebankingbackend.dtos.UserDTO;
 import org.sid.ebankingbackend.entities.Role;
 import org.sid.ebankingbackend.entities.User;
@@ -12,9 +10,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@Mapper
+@Mapper
 public interface UserMapper {
+    //UserMapper INSTANCE = Mappers.getMapper( UserMapper.class );
+   /*
     @Mapping(source = "roles", target = "roles", qualifiedByName = "stringListToRoleList")
+
     User userDtoToUser(UserDTO userDTO);
 
     @Named("stringListToRoleList")
@@ -33,6 +34,7 @@ public interface UserMapper {
     UserDTO userToUserDTO(User user); // Simple
 
     @Mapping(target = "roles", qualifiedByName = "roleListToStringList")
+
     UserDTO userToUserDTOWithRoles(User user);
 
     @Named("roleListToStringList")
@@ -43,5 +45,5 @@ public interface UserMapper {
                 .map(Role::getName)
                 .collect(Collectors.toList());
     }
+    */
 }
-*/

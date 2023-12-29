@@ -1,20 +1,15 @@
 package org.sid.ebankingbackend.controllers;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.sid.ebankingbackend.dtos.UserDTO;
-import org.sid.ebankingbackend.entities.User;
-import org.sid.ebankingbackend.repositories.UserRepository;
-import org.sid.ebankingbackend.services.UserServiceImpl;
+import org.sid.ebankingbackend.entities.UserElastic;
+import org.sid.ebankingbackend.services.Impl.UserServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityExistsException;
-import java.util.Collection;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -38,6 +33,29 @@ public class UserController {
     @PostMapping("/create")
     public UserDTO createUser(@RequestBody UserDTO userDTO) {
         return userService.createUser(userDTO);
+    }
+
+    //@PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/{id}")
+    public void getAllUsers(@PathVariable Long id) {
+        userService.deleteUser(id);
+    }
+
+    //@PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody @Valid UserDTO userDTO, BindingResult bindingResult) { // you can use GlobalExceptionHandler instead of BindingResult
+        if (bindingResult.hasErrors()) {
+            String errorMessage = "Validation error: " + bindingResult.getAllErrors();
+            return ResponseEntity.badRequest().body(errorMessage);
+        }
+        userDTO.setId(id);
+
+        return ResponseEntity.ok(userService.updateUser(userDTO));
+    }
+
+    @GetMapping("/index/{username}")
+    public UserElastic indexUser(@PathVariable String username) {
+       return userService.indexUser(username);
     }
 
 /*

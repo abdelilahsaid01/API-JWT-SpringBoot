@@ -5,7 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.impl.DefaultClaims;
 import lombok.AllArgsConstructor;
 import org.sid.ebankingbackend.entities.User;
-import org.sid.ebankingbackend.services.JwtTokenService;
+import org.sid.ebankingbackend.services.Impl.JwtTokenService;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

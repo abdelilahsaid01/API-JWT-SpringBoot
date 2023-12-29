@@ -3,7 +3,7 @@ package org.sid.ebankingbackend.security;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
-import org.sid.ebankingbackend.services.JwtTokenService;
+import org.sid.ebankingbackend.services.Impl.JwtTokenService;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

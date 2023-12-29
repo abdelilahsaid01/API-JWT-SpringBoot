@@ -1,4 +1,4 @@
-package org.sid.ebankingbackend.security;
+package org.sid.ebankingbackend.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

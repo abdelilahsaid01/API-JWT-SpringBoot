@@ -1,4 +1,4 @@
-package org.sid.ebankingbackend.services;
+package org.sid.ebankingbackend.services.Impl;
 
 import org.sid.ebankingbackend.repositories.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,6 +1,6 @@
 package org.sid.ebankingbackend.security;
 
-import org.sid.ebankingbackend.services.JwtTokenService;
+import org.sid.ebankingbackend.services.Impl.JwtTokenService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
